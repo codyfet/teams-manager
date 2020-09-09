@@ -149,14 +149,28 @@ export default function teams(state = getInitialAsyncContainerForTeams(), action
                 isLoading: true
             };
         case CREATE_POSITION_LOAD_SUCCESS: {
-            console.log(action.payload);
-            return state;
+            const clonedTeams = JSON.parse(JSON.stringify(state.data));
+
+            for (let x = 0; x < clonedTeams.length; x++) {
+                const positions = clonedTeams[x].positions;
+
+                for (let y = 0; y < positions.length; y++) {
+                    if (positions[y].id === parseInt(action.payload.positionId)) {
+                        positions[y].positionLoads.push(action.payload.positionLoad.data);
+                    }
+                }
+            }
+
+            return {
+                ...state,
+                data: clonedTeams
+            };
         }
         case CREATE_POSITION_LOAD_FAILURE:
             return {
+                ...state,
                 error: null,
                 isLoading: false,
-                data: null
             };
         case DELETE_POSITION_LOAD_START:
             return {
@@ -164,17 +178,32 @@ export default function teams(state = getInitialAsyncContainerForTeams(), action
                 isLoading: true
             };
         case DELETE_POSITION_LOAD_SUCCESS: {
-            console.log(action.payload);
-            /**
-             * Реализовать логику обновления стора.
-             */
-            return state;
+            const clonedTeams = JSON.parse(JSON.stringify(state.data));
+
+            for (let x = 0; x < clonedTeams.length; x++) {
+                const positions = clonedTeams[x].positions;
+
+                for (let y = 0; y < positions.length; y++) {
+                    const positionLoads = positions[y].positionLoads;
+
+                    for (let z = 0; z < positionLoads.length; z++) {
+                        if (positionLoads[z].id === action.payload) {
+                            positionLoads[z].removed = true;
+                        }
+                    }
+                }
+            }
+
+            return {
+                ...state,
+                data: clonedTeams
+            };
         }
         case DELETE_POSITION_LOAD_FAILURE:
             return {
+                ...state,
                 error: null,
                 isLoading: false,
-                data: null
             };
         case UPDATE_TEAM_START:
             return {

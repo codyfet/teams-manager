@@ -20,7 +20,7 @@ import {
 } from "./ActionTypes";
 import {
     createPositionLoad as tryCreatePositionLoad,
-    deletePosition as tryDeletePositionLoad,
+    deletePositionLoad as tryDeletePositionLoad,
     getEmployees as tryGetEmployees,
     getTeams as tryGetTeams,
     updatePositionLoad as tryUpdatePositionLoad,
@@ -93,7 +93,7 @@ export function createPositionLoad(positionId, param) {
 
         try {
             const positionLoad = await tryCreatePositionLoad(positionId, param);
-            dispatch({type: CREATE_POSITION_LOAD_SUCCESS, payload: positionLoad});
+            dispatch({type: CREATE_POSITION_LOAD_SUCCESS, payload: {positionLoad, positionId}});
             return positionLoad;
         } catch (error) {
             dispatch({type: CREATE_POSITION_LOAD_FAILURE, payload: error});

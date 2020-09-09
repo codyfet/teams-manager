@@ -55,6 +55,10 @@ export const Team = () => {
                                 percent={`${parseInt(sumByLoads / position.capacity)}%`}
                             />
                             {position.positionLoads.map((positionLoad) => {
+                                if (positionLoad.removed) {
+                                    return null;
+                                }
+
                                 return (
                                     <PersonCard
                                         key={positionLoad.id}
