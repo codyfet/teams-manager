@@ -29,6 +29,16 @@ export function getEmployees() {
     return axios.get("/api/employees");
 }
 
+export function createPositionLoad(positionId, param) {
+    // PUT /positions/{posId}/load - редактировать загрузку относительно позиции (объект в теле запроса)
+    return axios.post(`/api/positions/${positionId}/load`, param);
+}
+
+export function deletePositionLoad(positionId, loadId) {
+    // PUT /positions/{posId}/load - редактировать загрузку относительно позиции (объект в теле запроса)
+    return axios.delete(`/api/positions/${positionId}/load/${loadId}`);
+}
+
 export function updatePositionLoad(positionId, param) {
     // PUT /positions/{posId}/load - редактировать загрузку относительно позиции (объект в теле запроса)
     return axios.put(`/api/positions/${positionId}/load`, param);

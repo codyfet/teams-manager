@@ -1,4 +1,10 @@
 import {
+    CREATE_POSITION_LOAD_FAILURE,
+    CREATE_POSITION_LOAD_START,
+    CREATE_POSITION_LOAD_SUCCESS,
+    DELETE_POSITION_LOAD_FAILURE,
+    DELETE_POSITION_LOAD_START,
+    DELETE_POSITION_LOAD_SUCCESS,
     GET_TEAMS_FAILURE,
     GET_TEAMS_START,
     GET_TEAMS_SUCCESS,
@@ -7,7 +13,7 @@ import {
     UPDATE_POSITION_LOAD_SUCCESS,
     UPDATE_TEAM_FAILURE,
     UPDATE_TEAM_START,
-    UPDATE_TEAM_SUCCESS
+    UPDATE_TEAM_SUCCESS,
 } from "../Actions/ActionTypes";
 
 /**
@@ -132,6 +138,39 @@ export default function teams(state = getInitialAsyncContainerForTeams(), action
             return state;
         }
         case UPDATE_POSITION_LOAD_FAILURE:
+            return {
+                error: null,
+                isLoading: false,
+                data: null
+            };
+        case CREATE_POSITION_LOAD_START:
+            return {
+                ...state,
+                isLoading: true
+            };
+        case CREATE_POSITION_LOAD_SUCCESS: {
+            console.log(action.payload);
+            return state;
+        }
+        case CREATE_POSITION_LOAD_FAILURE:
+            return {
+                error: null,
+                isLoading: false,
+                data: null
+            };
+        case DELETE_POSITION_LOAD_START:
+            return {
+                ...state,
+                isLoading: true
+            };
+        case DELETE_POSITION_LOAD_SUCCESS: {
+            console.log(action.payload);
+            /**
+             * Реализовать логику обновления стора.
+             */
+            return state;
+        }
+        case DELETE_POSITION_LOAD_FAILURE:
             return {
                 error: null,
                 isLoading: false,

@@ -47,7 +47,7 @@ export const Team = () => {
 
                 return (
                     <div key={position.id}>
-                        <div className="role-title">{position.info?.role}</div>
+                        <div className="role-title">{position.info?.role || "DEVELOPER"}</div>
                         <div className="card-panel">
                             <RoleCard
                                 capacityCount={position.capacity}
@@ -59,11 +59,12 @@ export const Team = () => {
                                     <PersonCard
                                         key={positionLoad.id}
                                         positionLoad={positionLoad}
+                                        positionId={position.id}
                                     />
                                 );
                             })}
                             <EmptyCard onClick={() => {
-                                history.push(`/persons?teamId=${team.id}`);
+                                history.push(`/persons?teamId=${team.id}&positionId=${position.id}`);
                             }}/>
                         </div>
                     </div>

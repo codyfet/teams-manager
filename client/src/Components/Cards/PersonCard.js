@@ -3,14 +3,14 @@ import {Icon, Image} from "semantic-ui-react";
 import Slider from "react-rangeslider";
 import "react-rangeslider/lib/index.css";
 import {useDispatch} from "react-redux";
-import {updatePositionLoad} from "../../Actions/Actions";
+import {deletePositionLoad} from "../../Actions/Actions";
 
 /**
  * Мини-карточка сотрудника.
  *
  * @param {Object} positionLoad Объект загрузки (включает модель сотрудника и его показатель загрузки) для позиции.
  */
-export const PersonCard = ({positionLoad}) => {
+export const PersonCard = ({positionId, positionLoad}) => {
     const [rangeValue, setRangeValue] = useState(positionLoad.chargePercent);
     const dispatch = useDispatch();
 
@@ -27,10 +27,14 @@ export const PersonCard = ({positionLoad}) => {
 
     };
 
+    const handleRemoveClick = () => {
+        dispatch(deletePositionLoad(positionId, positionLoad.id));
+    };
+
     return (
         <div className="card person-card">
             <Icon
-                onClick={() => {/** TODO: Здесь будет логика удаления сотрудника из позиции. */}}
+                onClick={handleRemoveClick}
                 className="close-button"
                 name='close'
             />

@@ -1,4 +1,10 @@
 import {
+    CREATE_POSITION_LOAD_FAILURE,
+    CREATE_POSITION_LOAD_START,
+    CREATE_POSITION_LOAD_SUCCESS,
+    DELETE_POSITION_LOAD_FAILURE,
+    DELETE_POSITION_LOAD_START,
+    DELETE_POSITION_LOAD_SUCCESS,
     GET_EMPLOYEES_FAILURE,
     GET_EMPLOYEES_START,
     GET_EMPLOYEES_SUCCESS,
@@ -13,10 +19,12 @@ import {
     UPDATE_TEAM_SUCCESS,
 } from "./ActionTypes";
 import {
+    createPositionLoad as tryCreatePositionLoad,
+    deletePosition as tryDeletePositionLoad,
     getEmployees as tryGetEmployees,
     getTeams as tryGetTeams,
     updatePositionLoad as tryUpdatePositionLoad,
-    updateTeam as tryUpdateTeam
+    updateTeam as tryUpdateTeam,
 } from "../Services/Services";
 
 /**
@@ -72,6 +80,49 @@ export function updateTeam(newTeam) {
         }
     };
 }
+
+/**
+ * Thunk функция для выполнения ajax запроса для изменения показателя загрузки сотрудника на конкретной позиции.
+ *
+ * @param {positionId} positionId Идентификатор позиции.
+ * @param {Object} param Изменённый объект.
+ */
+export function createPositionLoad(positionId, param) {
+    return async function (dispatch) {
+        dispatch({type: CREATE_POSITION_LOAD_START});
+
+        try {
+            const positionLoad = await tryCreatePositionLoad(positionId, param);
+            dispatch({type: CREATE_POSITION_LOAD_SUCCESS, payload: positionLoad});
+            return positionLoad;
+        } catch (error) {
+            dispatch({type: CREATE_POSITION_LOAD_FAILURE, payload: error});
+            throw error;
+        }
+    };
+}
+
+/**
+ * Thunk функция для выполнения ajax запроса для изменения показателя загрузки сотрудника на конкретной позиции.
+ *
+ * @param {positionId} positionId Идентификатор позиции.
+ * @param {positionId} loadId Идентификатор загрузки.
+ */
+export function deletePositionLoad(positionId, loadId) {
+    return async function (dispatch) {
+        dispatch({type: DELETE_POSITION_LOAD_START});
+
+        try {
+            const positionLoad = await tryDeletePositionLoad(positionId, loadId);
+            dispatch({type: DELETE_POSITION_LOAD_SUCCESS, payload: loadId});
+            return positionLoad;
+        } catch (error) {
+            dispatch({type: DELETE_POSITION_LOAD_FAILURE, payload: error});
+            throw error;
+        }
+    };
+}
+
 
 /**
  * Thunk функция для выполнения ajax запроса для изменения показателя загрузки сотрудника на конкретной позиции.

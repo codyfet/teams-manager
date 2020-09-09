@@ -4,6 +4,8 @@ import Slider from "react-rangeslider";
 import {Button, Grid, Icon, Image} from "semantic-ui-react";
 import {useHistory} from "react-router-dom";
 import {useRouter} from "../Hooks/useRouter";
+import {useDispatch} from "react-redux";
+import {createPositionLoad} from "../Actions/Actions";
 
 /**
  * Сайдбар-панель, открывающаяся при добавлении сотрудника на позицию.
@@ -13,6 +15,7 @@ import {useRouter} from "../Hooks/useRouter";
  */
 export const PersonSidebar = ({person, setShowPersonModal}) => {
     const history = useHistory();
+    const dispatch = useDispatch();
     const chargeability = 100;
     const [rangeValue, setRangeValue] = useState(chargeability);
     const router = useRouter();
@@ -30,7 +33,15 @@ export const PersonSidebar = ({person, setShowPersonModal}) => {
      * Обраотчик нажатия на кнопку Добавить.
      */
     const addEmployeeButtonClick = () => {
-        history.push(`/team/${router.query.teamId}`);
+        const positionId = router.query.positionId;
+        const teamId = router.query.teamId;
+
+        dispatch(createPositionLoad(positionId, {
+            chargePercent: rangeValue,
+            employee: person
+        }));
+
+        history.push(`/team/${teamId}`);
     };
 
     return (
