@@ -2,6 +2,8 @@
 
 Система планирования ресурсов.
 
+Доступно по адресу https://nameless-thicket-41570.herokuapp.com/
+
 ## Развёртывание
 
 Для установки зависимостей
@@ -11,7 +13,7 @@ npm install && npm run install-client
 
 Для production сборки
 ```
-npm run build
+npm run build-prod
 ```
 
 ## Запуск
