@@ -63,7 +63,7 @@ export const Team = () => {
                                 );
                             })}
                             <EmptyCard onClick={() => {
-                                history.push("/persons");
+                                history.push(`/persons?teamId=${team.id}`);
                             }}/>
                         </div>
                     </div>

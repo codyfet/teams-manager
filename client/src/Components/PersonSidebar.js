@@ -3,6 +3,7 @@ import Sidebar from "react-sidebar";
 import Slider from "react-rangeslider";
 import {Button, Grid, Icon, Image} from "semantic-ui-react";
 import {useHistory} from "react-router-dom";
+import {useRouter} from "../Hooks/useRouter";
 
 /**
  * Сайдбар-панель, открывающаяся при добавлении сотрудника на позицию.
@@ -12,8 +13,9 @@ import {useHistory} from "react-router-dom";
  */
 export const PersonSidebar = ({person, setShowPersonModal}) => {
     const history = useHistory();
-    const chargeability = 100; // TODO: Убрать хардкод.
+    const chargeability = 100;
     const [rangeValue, setRangeValue] = useState(chargeability);
+    const router = useRouter();
 
     /**
      * Обработчик изменения диапазона загрузки сотрудника.
@@ -24,6 +26,13 @@ export const PersonSidebar = ({person, setShowPersonModal}) => {
         setRangeValue(value);
     };
 
+    /**
+     * Обраотчик нажатия на кнопку Добавить.
+     */
+    const addEmployeeButtonClick = () => {
+        history.push(`/team/${router.query.teamId}`);
+    };
+
     return (
         <Sidebar
             sidebar={
@@ -31,15 +40,15 @@ export const PersonSidebar = ({person, setShowPersonModal}) => {
                     <Button className="close-sidebar" onClick={() => setShowPersonModal(false)} icon='close' />
                     <div className="section">
                         <Image width={96} height={96} circular src='https://react.semantic-ui.com/images/avatar/small/matthew.png' />
-                        <div className="name">{person.fio} <Button className="add-person-button" onClick={() => {history.push("/team/9");}}><Icon name='plus' />Добавить</Button></div>
+                        <div className="name">{person.fio} <Button className="add-person-button" onClick={addEmployeeButtonClick}><Icon name='plus' />Добавить</Button></div>
                         <div className="label-text">{person.position}</div>
                     </div>
                     <div className="section">
                         <div className="label-text">Уровень загрузки на проекте Прокопьевск</div>
                         <div className="chargeability-range">
-                            <span className="percent-value">{chargeability}%</span>
+                            <span className="percent-value">{rangeValue}%</span>
                             <Slider
-                                className={`chargeability-range-input sidebar-chargeability-range-input ${chargeability < 33 ? "green" : chargeability < 77 ? "orange" : "red"}`}
+                                className={`chargeability-range-input sidebar-chargeability-range-input ${rangeValue < 33 ? "green" : rangeValue < 77 ? "orange" : "red"}`}
                                 value={rangeValue}
                                 orientation="horizontal"
                                 onChange={handleRangeChange}
@@ -76,7 +85,7 @@ export const PersonSidebar = ({person, setShowPersonModal}) => {
                             </Grid.Row>
                         </Grid>
                     </div>
-                    <div className="section">
+                    {/* <div className="section">
                         <Grid>
                             <Grid.Row>
                                 <Grid.Column width={7}>
@@ -89,7 +98,7 @@ export const PersonSidebar = ({person, setShowPersonModal}) => {
                                 </Grid.Column>
                             </Grid.Row>
                         </Grid>
-                    </div>
+                    </div> */}
                 </div>
             }
             open
