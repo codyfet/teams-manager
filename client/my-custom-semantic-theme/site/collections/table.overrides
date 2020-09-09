@@ -1,0 +1,11 @@
+/*******************************
+         Site Overrides
+*******************************/
+
+.ui.table thead th {
+    font-size: 12px;
+}
+
+.ui.table td {
+    font-weight: 500;
+}

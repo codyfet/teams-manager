@@ -1,0 +1,353 @@
+body {
+    background: #FBFBFD;
+
+    // .ui.menu {
+    //     height: 70px;
+    //     border-radius: 0;
+    //     // position: fixed;
+    //     width: 100%;
+    //     z-index: 100;
+    //     top: 0;
+
+    //     .item.logo:hover {
+    //         background: white;
+    //     }
+    // }
+
+    // .loading-overlay {
+    //     position: fixed;
+    //     top: 0;
+    //     height: 100%;
+    //     width: 100%;
+    //     background: black;
+    //     opacity: .4;
+    //     z-index: 1;
+
+    //     div.loader {
+    //         position: absolute;
+    //         margin: auto;
+    //         top: 0;
+    //         left: 0;
+    //         bottom: 0;
+    //         right: 0;
+    //     }
+    // }
+
+    .chargeability-range-input {
+        width: 98px;
+        height: 5px;
+        margin: 7px 0;
+
+        &.sidebar-chargeability-range-input {
+            width: auto;
+        }
+
+        &.green {
+            .rangeslider__handle, rangeslider__fill  {
+                background: green;
+            }
+        }
+
+        &.orange {
+            .rangeslider__handle, .rangeslider__fill {
+                background: orange;
+            }
+        }
+
+        &.red {
+            .rangeslider__handle, .rangeslider__fill {
+                background: red;
+            }
+        }
+
+        &.rangeslider-horizontal {
+            .rangeslider__handle:after {
+                display: none;
+            }
+
+            .rangeslider__handle {
+                width: 10px;
+                height: 10px;
+                box-shadow: none;
+                border: 2px solid white;
+            }
+
+            .rangeslider__fill {
+                box-shadow: none;
+            }
+        }
+    }
+
+    .a-link {
+        cursor: pointer;
+    }
+
+    .ui.button.filter-button {
+        background: white;
+        border-radius: 0;
+        font-weight: 300;
+        border: 1px solid #CECECE;
+        padding-left: 15px;
+        padding-right: 10px;
+    }
+
+    .ui.button.filter-button-apply {
+        background: white;
+        border-radius: 0;
+        font-weight: 300;
+        border: 1px solid #CECECE;
+        padding-left: 15px;
+        padding-right: 10px;
+    }
+
+    .ui.button.add-person-button {
+        background: #FFA101;
+        border-radius: 0;
+        font-weight: 300;
+        border: 1px solid #CECECE;
+        padding-left: 15px;
+        padding-right: 10px;
+        color: white;
+    }
+
+    .property {
+        font-weight: normal;
+        font-size: 12px;
+        color: #666666;
+    }
+
+    .value {
+        font-weight: bold;
+        font-size: 16px;
+    }
+
+    .layout {
+        padding: 20px;
+
+        .backlink {
+            margin-bottom: 20px;
+        }
+
+        .page-header {
+            display: flex;
+            margin-bottom: 30px;
+
+            > div {
+                margin-right: 15px;
+            }
+
+            .page-header-title {
+                font-size: 32px;
+            }
+        }
+    }
+
+    .card {
+        width: 170px;
+        height: 170px;
+        background: white;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 0px 2px rgba(0, 0, 0, 0.06), 0px 0px 1px rgba(0, 0, 0, 0.04);
+        border-radius: 4px;
+        padding: 15px;
+        margin-right: 16px;
+        position: relative;
+
+        .close-button {
+            position: absolute;
+            right: 10px;
+            cursor: pointer;
+            color: #666666;
+        }
+
+        &.double-sized {
+            width: 356px;
+        }
+
+        &.empty-card {
+            background: transparent;
+            border: 2px solid #DFDFE4;
+            border-style: dashed;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+
+            svg.plus {
+                margin: 0 auto;
+                display: block;
+            }
+        }
+
+        &.person-card {
+            img {
+                height: 56px;
+            }
+
+            .name {
+                margin-top: 24px;
+                font-weight: 500;
+                font-size: 14px;
+            }
+
+            .role {
+                color: #666666;
+                font-weight: normal;
+                font-size: 12px;
+                margin-top: 8px;
+            }
+
+            .chargeability-range {
+                display: flex;
+
+                .percent-value {
+                    font-weight: bold;
+                    font-size: 10px;
+                    margin-right: 5px;
+                }
+            }
+        }
+
+        &.role-card {
+            .role-card-item {
+                margin-bottom: 8px;
+            }
+        }
+
+        &.team-info-card {
+            display: flex;
+
+            .property-wrapper {
+                margin-bottom: 10px;
+            }
+
+            .edit-icon {
+                cursor: pointer;
+            }
+
+            .chart-legend {
+                font-size: 12px;
+                width: 150px;
+
+                .chart-marker {
+                    width: 10px;
+                    height: 10px;
+                    background: orange;
+                    border-radius: 50px;
+                    float: left;
+                    margin-right: 5px;
+                    margin-top: 3px;
+
+                    &.orange {
+                        background: orange;
+                    }
+
+                    &.gray {
+                        background: gray;
+                    }
+                }
+            }
+        }
+    }
+
+    .teams-page {
+        // .count-person-filter {
+        //     display: flex;
+        //     justify-content: space-around;
+        //     line-height: 30px;
+
+        //     input {
+        //         width: 50px !important;
+        //     }
+        // }
+
+        .filter-header {
+            font-weight: 500;
+            font-size: 16px;
+            margin-bottom: 16px;
+        }
+
+        .link-to-team {
+            margin-right: 25px;
+        }
+    }
+
+    // .person-page, .person-modal {
+    //     .chargebility-pie {
+    //         > div {
+    //             margin: 0 auto;
+    //         }
+    //     }
+
+    //     .chargebility-ranges {
+    //         border: 1px solid black;
+    //         padding: 20px;
+
+    //         input[type="range"] {
+    //             width: 100%;
+    //         }
+    //     }
+    // }
+
+    .person-sidebar {
+        width: 500px;
+        padding: 25px;
+
+        .close-sidebar {
+            position: absolute;
+            right: 25px;
+            top: 25px;
+        }
+
+        .section {
+            border-bottom: 1px solid #ECECEC;
+            padding-bottom: 24px;
+        }
+
+        .name {
+            margin-top: 24px;
+            font-weight: 600;
+            font-size: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .label-text {
+            color: #666666;
+            font-weight: normal;
+            font-size: 12px;
+            margin-top: 10px;
+            margin-bottom: 2px;
+        }
+
+        .label-value {
+            font-weight: 500;
+            font-size: 14px;
+            color: #333333;
+            margin-top: 2px;
+        }
+
+        .technology-stack {
+            margin-top: 6px;
+
+            .technology-label {
+                background: #EFF2FF;
+                padding: 4px 13px;
+                color: #5E5FB0;
+                margin-right: 5px;
+                margin-top: 10px;
+            }
+        }
+    }
+
+    .team-page {
+        .role-title {
+            font-weight: 500;
+            font-size: 16px;
+            margin: 30px 0 15px;
+        }
+
+        .card-panel {
+            display: flex;
+        }
+    }
+}

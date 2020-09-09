@@ -1,0 +1,41 @@
+{
+  "name": "teams",
+  "version": "1.0.0",
+  "description": "Application for managing teams",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "server": "nodemon app.js",
+    "client": "npm run start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "build": "npm run build --prefix client && ncp client/dist public",
+    "install-client": "cd client && npm install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://git.heroku.com/nameless-thicket-41570.git"
+  },
+  "keywords": [
+    "react",
+    "redux",
+    "express",
+    "semantic-ui-react"
+  ],
+  "author": "a.volkov <a.volkov@accenture.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://git.heroku.com/nameless-thicket-41570/issues"
+  },
+  "homepage": "https://git.heroku.com/nameless-thicket-41570#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-validator": "^6.5.0",
+    "mongoose": "^5.9.14",
+    "request": "^2.88.2"
+  },
+  "devDependencies": {
+    "concurrently": "^5.2.0",
+    "ncp": "^2.0.0",
+    "nodemon": "^2.0.4"
+  }
+}
