@@ -24,11 +24,7 @@ export const PersonCard = ({positionLoad}) => {
     };
 
     const handleRangeCompleteChange = (value) => {
-        console.log("complete change");
-        // dispatch(updatePositionLoad(positionLoad.id, {
-        //     ...positionLoad,
-        //     chargePercent: value
-        // }));
+
     };
 
     return (
@@ -39,8 +35,8 @@ export const PersonCard = ({positionLoad}) => {
                 name='close'
             />
             <div><Image circular src='https://react.semantic-ui.com/images/avatar/small/matthew.png' /></div>
-            <div className="name">{positionLoad.employee.name}</div>
-            <div className="role">{positionLoad.employee.role}</div>
+            <div className="name">{positionLoad.employee.fio}</div>
+            <div className="role">{positionLoad.employee.position}</div>
             <div className="chargeability-range">
                 <span className="percent-value">{rangeValue}%</span>
                 <Slider

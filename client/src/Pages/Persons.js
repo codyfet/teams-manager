@@ -9,27 +9,6 @@ import {useDispatch, useSelector} from "react-redux";
 import {getEmployees} from "../Actions/Actions";
 import {LoadingOverlay} from "../Components/Common/LoadingOverlay";
 
-// const PERSONS = [
-//     {
-//         id: 1111,
-//         name: "Павлов Максим Иванович",
-//         owner: "Иванов Иван Иванович",
-//         level: "Старший разработчик",
-//         department: "ИТ Отдел",
-//         chargeability: 110,
-//         number: "123243"
-//     },
-//     {
-//         id: 2222,
-//         name: "Фролов Сергей Иванович",
-//         owner: "Иванов Иван Иванович",
-//         level: "Разработчик",
-//         department: "ИТ Отдел",
-//         chargeability: 50,
-//         number: "2243324"
-//     },
-// ];
-
 const PERSON_LEVELS = [
     {value: "developer", label: "Разработчик"},
     {value: "middleDeveloper", label: "Старший разработчик"},
@@ -49,7 +28,7 @@ const PERSON_DEPARTMENTS = [
  */
 export const Persons = () => {
     const [filterPanelIsVisible, setFilterPanelIsVisible] = useState(false);
-    const [showPersonModal, setShowPersonModal] = useState(false);
+    const [{isPersonModalVisible, personId}, setShowPersonModal] = useState({isPersonModalVisible: false, personId: null});
     const history = useHistory();
     const animatedComponents = makeAnimated();
     const dispatch = useDispatch();
@@ -122,20 +101,22 @@ export const Persons = () => {
                     <Table.Body>
                         {employees.map((item, index) => {
                             return (
-                                <Table.Row key={item.id}>
+                                <Table.Row key={item.id} id={item.id}>
                                     <Table.Cell textAlign="center">{index + 1}</Table.Cell>
                                     <Table.Cell>{item.fio}</Table.Cell>
                                     <Table.Cell>{item.number}</Table.Cell>
                                     <Table.Cell>{item.manager}</Table.Cell>
                                     <Table.Cell>{item.department}</Table.Cell>
                                     <Table.Cell>{item.spec}</Table.Cell>
-                                    <Table.Cell textAlign="right"><a className="a-link" onClick={() => {setShowPersonModal(true);}}>Настроить</a></Table.Cell>
+                                    <Table.Cell textAlign="right"><a className="a-link" onClick={(e) => {
+                                         setShowPersonModal({isPersonModalVisible: true, personId: e.target.closest("tr").id});
+                                    }}>Настроить</a></Table.Cell>
                                 </Table.Row>
                             );
                         })}
                     </Table.Body>
                 </Table>
-                {showPersonModal && <PersonSidebar person={employees[0]} setShowPersonModal={setShowPersonModal} />}
+                {isPersonModalVisible && <PersonSidebar person={employees.find((item) => item.id === parseInt(personId))} setShowPersonModal={setShowPersonModal} />}
             </Container>
         )
     );

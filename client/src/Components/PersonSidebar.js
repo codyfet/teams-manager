@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import Sidebar from "react-sidebar";
 import Slider from "react-rangeslider";
 import {Button, Grid, Icon, Image} from "semantic-ui-react";
@@ -12,6 +12,17 @@ import {useHistory} from "react-router-dom";
  */
 export const PersonSidebar = ({person, setShowPersonModal}) => {
     const history = useHistory();
+    const chargeability = 100; // TODO: Убрать хардкод.
+    const [rangeValue, setRangeValue] = useState(chargeability);
+
+    /**
+     * Обработчик изменения диапазона загрузки сотрудника.
+     *
+     * @param {number} value Новое значение.
+     */
+    const handleRangeChange = (value) => {
+        setRangeValue(value);
+    };
 
     return (
         <Sidebar
@@ -20,18 +31,18 @@ export const PersonSidebar = ({person, setShowPersonModal}) => {
                     <Button className="close-sidebar" onClick={() => setShowPersonModal(false)} icon='close' />
                     <div className="section">
                         <Image width={96} height={96} circular src='https://react.semantic-ui.com/images/avatar/small/matthew.png' />
-                        <div className="name">{person.name} <Button className="add-person-button" onClick={() => {history.push("/team/9");}}><Icon name='plus' />Добавить</Button></div>
-                        <div className="label-text">{person.level}</div>
+                        <div className="name">{person.fio} <Button className="add-person-button" onClick={() => {history.push("/team/9");}}><Icon name='plus' />Добавить</Button></div>
+                        <div className="label-text">{person.position}</div>
                     </div>
                     <div className="section">
                         <div className="label-text">Уровень загрузки на проекте Прокопьевск</div>
                         <div className="chargeability-range">
-                            <span className="percent-value">{person.chargeability}%</span>
+                            <span className="percent-value">{chargeability}%</span>
                             <Slider
-                                className={`chargeability-range-input sidebar-chargeability-range-input ${person.chargeability < 33 ? "green" : person.chargeability < 77 ? "orange" : "red"}`}
-                                value={person.chargeability}
+                                className={`chargeability-range-input sidebar-chargeability-range-input ${chargeability < 33 ? "green" : chargeability < 77 ? "orange" : "red"}`}
+                                value={rangeValue}
                                 orientation="horizontal"
-                                onChange={() => null}
+                                onChange={handleRangeChange}
                             />
                         </div>
                     </div>
@@ -40,17 +51,17 @@ export const PersonSidebar = ({person, setShowPersonModal}) => {
                             <Grid.Row>
                                 <Grid.Column width={7}>
                                     <div className="label-text">Табельный номер</div>
-                                    <div className="label-value">1234567</div>
+                                    <div className="label-value">{person.number}</div>
                                 </Grid.Column>
                                 <Grid.Column width={9}>
                                     <div className="label-text">ФИО Руководителя</div>
-                                    <div className="label-value">Петров Иван Иванович</div>
+                                    <div className="label-value">{person.manager}</div>
                                 </Grid.Column>
                             </Grid.Row>
                             <Grid.Row>
                                 <Grid.Column>
                                     <div className="label-text">Должность</div>
-                                    <div className="label-value">Старший разработчик</div>
+                                    <div className="label-value">{person.position}</div>
                                 </Grid.Column>
                             </Grid.Row>
                             <Grid.Row>
