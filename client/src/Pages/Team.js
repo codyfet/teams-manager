@@ -32,7 +32,7 @@ export const Team = () => {
                 backlink={<Link className="link-to-teams" to="/teams" key="teams">&lt; Вернуться к командам</Link>}
             />
 
-            <div className="card-panel">
+            <div className="grid-panel">
                 <PersonManagerCard name={team.manager} />
                 <TeamInfoCard percent={calculateActualTeamCapacity(team)} team={team} />
             </div>
@@ -46,9 +46,9 @@ export const Team = () => {
                 );
 
                 return (
-                    <div key={position.id}>
+                    <>
                         <div className="role-title">{position.info?.role || "DEVELOPER"}</div>
-                        <div className="card-panel">
+                        <div className="grid-panel" key={position.id}>
                             <RoleCard
                                 capacityCount={position.capacity}
                                 actualCount={position.positionLoads.length}
@@ -71,7 +71,7 @@ export const Team = () => {
                                 history.push(`/persons?teamId=${team.id}&positionId=${position.id}`);
                             }}/>
                         </div>
-                    </div>
+                    </>
                 );
             })}
         </Container>
