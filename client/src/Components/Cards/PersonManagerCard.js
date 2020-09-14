@@ -9,7 +9,7 @@ import "react-rangeslider/lib/index.css";
  */
 export const PersonManagerCard = ({name}) => {
     return (
-        <div className="card person-card">
+        <div className="card person-card person-manager-card">
             <div><Image circular src='https://react.semantic-ui.com/images/avatar/small/matthew.png' /></div>
             <div className="name">{name}</div>
             <div className="role">Руководитель команды</div>
