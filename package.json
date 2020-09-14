@@ -8,13 +8,12 @@
     "server": "nodemon app.js",
     "client": "npm run start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "build-prod": "npm run build --prefix client && rm -rf public/* && ncp client/dist public",
-    "install-client": "cd client && npm install",
-    "ri": "rm -rf public/*"
+    "build": "npm run build --prefix client",
+    "install-deps": "npm install && cd client && npm install"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://git.heroku.com/nameless-thicket-41570.git"
+    "url": "git+https://github.com/codyfet/teams-manager.git"
   },
   "keywords": [
     "react",
@@ -25,18 +24,16 @@
   "author": "a.volkov <a.volkov@accenture.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://git.heroku.com/nameless-thicket-41570/issues"
+    "url": "https://github.com/codyfet/teams-manager/issues"
   },
-  "homepage": "https://git.heroku.com/nameless-thicket-41570#readme",
+  "homepage": "https://github.com/codyfet/teams-manager#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "express-validator": "^6.5.0",
     "mongoose": "^5.9.14",
     "request": "^2.88.2"
   },
   "devDependencies": {
     "concurrently": "^5.2.0",
-    "ncp": "^2.0.0",
     "nodemon": "^2.0.4"
   }
 }

@@ -17,7 +17,6 @@ router.put(
                     console.log("body");
                     console.log(body);
                     res.status(201).json(body);
-                    // res.status(201).json(JSON.parse(body));
                 }
             });
         } catch (error) {
@@ -38,7 +37,6 @@ router.post(
             request.post({
                 headers: { 'content-type': 'application/json' },
                 url: `https://x5-teams.herokuapp.com/positions/${req.params.id}/load`,
-                //   body:    JSON.stringify(req.body)
                 headers: {
                     "content-type": "application/json",
                 },
@@ -60,10 +58,7 @@ router.post(
                 // body: req.body,
             }, function (error, response, body) {
                 if (!error && response.statusCode == 200) {
-                    console.log("body");
-                    console.log(body);
                     res.status(201).json(body);
-                    // res.status(201).json(JSON.parse(body));
                 }
             });
 
@@ -86,7 +81,6 @@ router.delete(
             }, function (error, response, body) {
                 if (!error && response.statusCode == 200) {
                     res.status(201).json(body);
-                    // res.status(201).json(JSON.parse(body));
                 }
             });
         } catch (error) {

@@ -19,84 +19,84 @@ import {
 /**
  * Заглушка для сервиса GET /teams.
  */
-const TEAMS_MOCK = [
-    {
-        "id": 9,
-        "title": "MARS",
-        "type": "PRODUCT",
-        "status": "ACTIVE",
-        "manager": "Andrew Managerov",
-        "positions": [
-            {
-                "id": 1,
-                "capacity": 2.0,
-                "status": "OPENED",
-                "dateOpened": null,
-                "dateClosed": null,
-                "info": {
-                    "id": 4,
-                    "level": "JUNIOR",
-                    "role": "TESTER",
-                    "stack": "Selenium"
-                },
-                "positionLoads": [
-                    {
-                        "id": 1,
-                        "chargePercent": 50.0,
-                        "employee": {
-                            "id": 1,
-                            "fio": "Vasilii Petrov",
-                            "number": 2345,
-                            "position": "developer",
-                            "department": "IES",
-                            "manager": "Andrew Managerov",
-                            "spec": "BACKEND",
-                            "stack": "Java 8"
-                        }
-                    }
-                ]
-            },
-            {
-                "id": 2,
-                "capacity": 3.0,
-                "status": "OPENED",
-                "dateOpened": null,
-                "dateClosed": null,
-                "info": {
-                    "id": 2,
-                    "level": "MIDDLE",
-                    "role": "DEVELOPER",
-                    "stack": "Java 8"
-                },
-                "positionLoads": []
-            }
-        ]
-    },
-    {
-        "id": 10,
-        "title": "SATURN",
-        "type": "PRODUCT",
-        "status": "ACTIVE",
-        "manager": "Andrew Managerov",
-        "positions": []
-    },
-    {
-        "id": 11,
-        "title": "JUPITER",
-        "type": "SERVICE",
-        "status": "ACTIVE",
-        "manager": "Andrew Managerov",
-        "positions": []
-    },
-    {
-        "id": 12,
-        "title": "URANUS",
-        "type": "PRODUCT",
-        "status": "ACTIVE",
-        "manager": "Andrew Managerov",
-        "positions": []
-    }
-];
+// const TEAMS_MOCK = [
+//     {
+//         "id": 9,
+//         "title": "MARS",
+//         "type": "PRODUCT",
+//         "status": "ACTIVE",
+//         "manager": "Andrew Managerov",
+//         "positions": [
+//             {
+//                 "id": 1,
+//                 "capacity": 2.0,
+//                 "status": "OPENED",
+//                 "dateOpened": null,
+//                 "dateClosed": null,
+//                 "info": {
+//                     "id": 4,
+//                     "level": "JUNIOR",
+//                     "role": "TESTER",
+//                     "stack": "Selenium"
+//                 },
+//                 "positionLoads": [
+//                     {
+//                         "id": 1,
+//                         "chargePercent": 50.0,
+//                         "employee": {
+//                             "id": 1,
+//                             "fio": "Vasilii Petrov",
+//                             "number": 2345,
+//                             "position": "developer",
+//                             "department": "IES",
+//                             "manager": "Andrew Managerov",
+//                             "spec": "BACKEND",
+//                             "stack": "Java 8"
+//                         }
+//                     }
+//                 ]
+//             },
+//             {
+//                 "id": 2,
+//                 "capacity": 3.0,
+//                 "status": "OPENED",
+//                 "dateOpened": null,
+//                 "dateClosed": null,
+//                 "info": {
+//                     "id": 2,
+//                     "level": "MIDDLE",
+//                     "role": "DEVELOPER",
+//                     "stack": "Java 8"
+//                 },
+//                 "positionLoads": []
+//             }
+//         ]
+//     },
+//     {
+//         "id": 10,
+//         "title": "SATURN",
+//         "type": "PRODUCT",
+//         "status": "ACTIVE",
+//         "manager": "Andrew Managerov",
+//         "positions": []
+//     },
+//     {
+//         "id": 11,
+//         "title": "JUPITER",
+//         "type": "SERVICE",
+//         "status": "ACTIVE",
+//         "manager": "Andrew Managerov",
+//         "positions": []
+//     },
+//     {
+//         "id": 12,
+//         "title": "URANUS",
+//         "type": "PRODUCT",
+//         "status": "ACTIVE",
+//         "manager": "Andrew Managerov",
+//         "positions": []
+//     }
+// ];
 
 function getInitialAsyncContainerForTeams() {
     return {
