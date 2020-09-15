@@ -32,8 +32,6 @@ router.post(
     "/:id/load",
     async (req, res) => {
         try {
-            console.log("====>req.body");
-            console.log(req.body);
             request.post({
                 headers: { 'content-type': 'application/json' },
                 url: `https://x5-teams.herokuapp.com/positions/${req.params.id}/load`,
@@ -41,21 +39,7 @@ router.post(
                     "content-type": "application/json",
                 },
                 json: true,
-                body: {
-                    "chargePercent": "62",
-                    "employee":
-                    {
-                        "id": 1,
-                        "fio": "Vasilii Petrov",
-                        "number": 2345,
-                        "position": "developer",
-                        "department": "IES",
-                        "manager": "Andrew Managerov",
-                        "spec": "BACKEND",
-                        "stack": "Java 8"
-                    }
-                }
-                // body: req.body,
+                body: req.body,
             }, function (error, response, body) {
                 if (!error && response.statusCode == 200) {
                     console.log("body");

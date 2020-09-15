@@ -8,7 +8,7 @@ app.use("/api/teams", require("./routes/teams.routes"));
 app.use("/api/employees", require("./routes/employees.routes"));
 app.use("/api/positions", require("./routes/positions.routes"));
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => console.log(`App started on ${PORT}.`));
 
