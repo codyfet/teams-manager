@@ -4,6 +4,8 @@
 
 Доступно по адресу https://nameless-thicket-41570.herokuapp.com/
 
+Backend часть расположена здесь https://github.com/Alkaline69/x5-teams
+
 ## Развёртывание
 
 Для установки зависимостей
@@ -23,7 +25,7 @@ npm run build-prod
 npm run dev
 ```
 
-Для запуска в production режиме (необходимо предварительно выполнить ```npm run build```)
+Для запуска в production режиме (необходимо предварительно выполнить ```npm run build-prod```)
 ```
 npm start
 ```
