@@ -2,7 +2,7 @@ import React from "react";
 import {Label} from "semantic-ui-react";
 
 /**
- * Лейбл с указанием статусв команды.
+ * Лейбл с указанием статусов команды.
  *
  * @param {string} status Статус команды.
  */

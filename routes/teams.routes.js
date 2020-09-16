@@ -33,7 +33,6 @@ router.put(
             }, function (error, response, body) {
                 if (!error && response.statusCode == 200) {
                     res.status(201).json(body);
-                    // res.status(201).json(JSON.parse(body));
                 }
             });
         } catch (error) {

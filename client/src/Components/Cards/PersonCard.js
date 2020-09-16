@@ -23,10 +23,20 @@ export const PersonCard = ({positionId, positionLoad}) => {
         setRangeValue(value);
     };
 
+    /**
+     * Обработчик завершения процесса изменения диапазона загрузки сотрудника.
+     *
+     * @param {number} value Новое значение.
+     */
     const handleRangeCompleteChange = (value) => {
 
     };
 
+    /**
+     * Обработчик нажатия на кнопку Удалить.
+     *
+     * @param {number} value Новое значение.
+     */
     const handleRemoveClick = () => {
         dispatch(deletePositionLoad(positionId, positionLoad.id));
     };

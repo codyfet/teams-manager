@@ -2,7 +2,9 @@ import {useMemo} from "react";
 import {useHistory, useLocation, useParams, useRouteMatch} from "react-router-dom";
 import queryString from "query-string";
 
-// Hook
+/**
+ * Source https://usehooks.com/useRouter/
+ */
 export function useRouter() {
     const params = useParams();
     const location = useLocation();
